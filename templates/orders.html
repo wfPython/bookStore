@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>订单</title>
+<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="I-wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/easing.js"></script>
+<!--fonts-->
+<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Montez' rel='stylesheet' type='text/css'>
+<link rel="icon" href="/static/image/12.ico" type="image/x-icon">
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<!--//fonts-->
+<script src="/static/js/simpleCart.min.js"> </script>
+<!-- start menu -->
+<link href="/static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="/static/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+
+        <script type="text/javascript">
+	$(function () {
+		$("#myButtons1 .btn").click(function(){
+			$(this).button('toggle');
+		});
+	});
+	</script>
+<!-- /start menu -->
+		  		 <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<!-- js -->
+		 <script src="/static/js/bootstrap.js"></script>
+	<!-- js -->
+
+</head>
+<body>
+<!--header-->
+		<div class="header-info">
+			<div class="container">
+					<div class="header-top-in">
+
+						<ul class="support">
+							<li><a href="mailto:info@example.com"><i class="glyphicon glyphicon-envelope"> </i>iread@163.com</a></li>
+							<li><span><i class="glyphicon glyphicon-earphone" class="tele-in"> </i>0 462 261 61 61</span></li>
+						</ul>
+						<ul class="support-right">
+							<li class="glyphicon glyphicon-user" class="men"></li><li>{{ session.name }},欢迎来到I-READ!</li>
+						  {% for customer in session.customer_data %}
+                            {% if customer[0]==session.id %}
+                                <li><button class="btn btn-default" data-toggle="modal" data-target="#myModal13{{ customer[0] }}"><i class="glyphicon glyphicon-lock" class="tele">个人中心 </i></button></li>
+                                <!--静态框--->
+                                <div class="modal fade" id="myModal13{{ customer[0] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                                                <div class="modal-dialog">
+		                                                <div class="modal-content">
+			                                                <div class="modal-header">
+				                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				                                            <h4 class="modal-title" id="myModalLabe">修改个人信息</h4></div>
+                                                        <div class="modal-body">
+				                                            <div style="padding: 100px 100px 10px;">
+	                                                            <form class="bs-example bs-example-form" role="form" action="/alter_customer/{{ customer[0] }}" method="post">
+		                                                            <div class="input-group input-group-lg">
+			                                                                <span class="input-group-addon">用户名</span>
+			                                                                <input type="text" class="form-control" name="username" placeholder="请输入用户名" value="{{ customer[1] }}">
+		                                                                </div><br>
+                                                                        <div class="input-group input-group-lg">
+			                                                                <span class="input-group-addon">密 码</span>
+			                                                                <input type="text" class="form-control" name="password" placeholder="请输入密码" value="{{ customer[2] }}">
+		                                                                </div><br>
+                                                                        <div class="input-group input-group-lg">
+                                                                            <span class="input-group-addon">昵称</span>
+			                                                                <input type="text" class="form-control" name="nickname" placeholder="请设置昵称" value="{{ customer[3] }}">
+		                                                                </div><br>
+                                                                        <div class="input-group input-group-lg">
+                                                                            <span class="input-group-addon">手机号</span>
+			                                                                <input type="text" class="form-control" name="phone" placeholder="请使用常用手机" value="{{ customer[4] }}">
+		                                                                </div><br>
+                                                                        <div class="input-group input-group-lg">
+                                                                            <span class="input-group-addon">地址</span>
+			                                                                <input type="text" class="form-control" name="address" placeholder="请输入地址" value="{{ customer[5] }}">
+		                                                                </div><br>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                            <button type="submit" class="btn btn-primary"  id="myButtons1">提交更改</button>
+			                                                            </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+		                                                </div><!-- /.modal-content -->
+	                                                </div><!-- /.modal -->
+                                                </div>
+                            {% endif %}
+                        {% endfor %}
+                            <li><a href="/order.page/{{ session.name }}"><i class="glyphicon glyphicon-lock" class="tele"> </i>订单中心</a></li>
+                             <li><a href="/logout.page"><i class="glyphicon glyphicon-off"> </i>退出登录</a></li>
+						</ul>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+
+<div class="header header5">
+	<div class="header-top">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<h1><a href="/">I-<span>read</span></a></h1>
+				</div>
+
+				<div class="top-nav">
+						<ul class="memenu skyblue">
+							<li class="active"><a href="/custommer_index.page">主页</a></li>
+							<li class="grid"><a href="#">童书</a></li>
+							<li class="grid"><a href="#">传记</a></li>
+							<li class="grid"><a href="#">管理</a></li>
+							<li class="grid"><a href="#">历史</a></li>
+							<li class="grid"><a href="#">电子书</a></li>
+						</ul>
+					<div class="clearfix"> </div>
+				</div>
+				<!---->
+				<div class="cart box_1">
+					<a href="/basket.page">
+                        <img src="/static/image/cart2-1.png" alt=""/></h3>
+					</a>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+				<!---->
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+
+<!---->
+<div class="back">
+	<h2>订单中心</h2>
+</div>
+		<!---->
+		<div class="product">
+			<div class="container">
+				    <div class="check-out">
+		                <div class=" cart-items">
+			                <h3>历史订单 </h3>
+                            <div class="in-check" >
+		                        <ul class="unit">
+                                    <li><span>订单号</span></li>
+                                    <li><span>Item</span></li>
+                                    <li><span>商品名称</span></li>
+                                    <li><span>单价</span></li>
+			                        <li><span>数量</span></li>
+			                        <li> </li>
+			                        <div class="clearfix"> </div>
+		                        </ul>
+
+                                {% for data in session.order_data %}
+		                        <ul class="cart-header">
+                                    <li><span>{{ data[0] }}</span></li>
+			                        <li class="ring-in"><img src="/static/image/{{ data[6] }}" class="img-responsive" alt=""></li>
+			                        <li><span>{{ data[4] }}</span></li>
+			                        <li><span>{{ data[5] }}</span></li>
+                                    <li><span>{{ data[2] }}</span></li>
+			                        <div class="clearfix"> </div>
+                                </ul>
+                                {% endfor %}
+                            </div>
+			            </div>
+                    </div>
+
+                    <div class=" per1">
+				        <a href="#"><img class="img-responsive" src="/static/image/basket2.jpeg" alt="">
+				        <div class="six1">
+                            <h4>DISCOUNT</h4>
+					        <p>Up to</p>
+					        <span>20%</span>
+				        </div></a>
+			        </div>
+			        <div class=" per2">
+				    <a href="single.html"><img class="img-responsive" src="/static/image/basket1.jpg" alt="">
+				    <div class="six2">
+					<h4>DISCOUNT</h4>
+					<p>Up to</p>
+					<span>30%</span>
+				</div></a>
+			    </div>
+			        <div class=" per3">
+				    <a href="single.html"><img class="img-responsive" src="/static/image/basket3.jpg" alt="">
+				    <div class="six3">
+					<h4>DISCOUNT</h4>
+					<p>Up to</p>
+					<span>45%</span>
+				</div></a>
+			    </div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+			<!---->
+<div class="bottom-grid1">
+
+					<div class="fit1">
+						<h3>君子曰：学不可以已。</h3>
+						<p>其数则始乎诵经，终乎读礼；其义则始乎为士，终乎为圣人，真积力久则入，学至乎没而后止也。</p>
+					</div>
+				</div>
+<!---->
+<footer>
+	<section class="service">
+		<ul>
+			<li><i></i>品类齐全，轻松购物</li>
+			<li><i></i>多仓直发，急速配送</li>
+			<li><i></i>正品行货，精致服务</li>
+			<li><i></i>天天低价，畅选无忧</li>
+		</ul>
+	</section>
+</footer>
+				 <!---->
+<script type="text/javascript">
+		$(document).ready(function() {
+				/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+				*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+
+			// 获取p $('.totalPrice').val('20')
+});
+</script>
+<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!---->
+<!---->
+</body>
+</html>

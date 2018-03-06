@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>首页</title>
+<link href="static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="I wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="text/javascript" src="static/js/move-top.js"></script>
+<script type="text/javascript" src="static/js/easing.js"></script>
+<!--fonts-->
+<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Montez' rel='stylesheet' type='text/css'>
+<link rel="icon" href="/static/image/12.ico" type="image/x-icon">
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<!--//fonts-->
+<!-- start menu -->
+<!--//slider-script-->
+<script src="static/js/easyResponsiveTabs.js" type="text/javascript"></script>
+		    <script type="text/javascript">
+			    $(document).ready(function () {
+			        $('#horizontalTab').easyResponsiveTabs({
+			            type: 'default', //Types: default, vertical, accordion
+			            width: 'auto', //auto or any width like 600px
+			            fit: true   // 100% fit in a container
+			        });
+			    });
+
+</script>
+
+    <script type="text/javascript">
+	$(function () {
+		$("#myButtons1 .btn").click(function(){
+			$(this).button('toggle');
+		});
+	});
+	</script>
+		  		 <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<!-- js -->
+		 <script src="static/js/bootstrap.js"></script>
+	<!-- js -->
+<script src="static/js/simpleCart.min.js"> </script>
+<!-- start menu -->
+<link href="static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="static/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<!-- /start menu -->
+</head>
+
+<body>
+<!--header-->
+		<div class="header-info">
+			<div class="container">
+				<div class="header-top-in">
+					<ul class="support">
+						<li><a href="mailto:info@example.com"><i class="glyphicon glyphicon-envelope"> </i>iread@163.com</a></li>
+						<li><span><i class="glyphicon glyphicon-earphone" class="tele-in"> </i>0 462 261 61 61</span></li>
+					</ul>
+					<ul class=" support-right">
+						<li class="glyphicon glyphicon-user" class="men"></li><li>{{ session.name }},欢迎来到I-READ!</li>
+                        {% for customer in session.customer_data %}
+                            {% if customer[0]==session.id %}
+                                <li><button class="btn btn-default" data-toggle="modal" data-target="#myModal13{{ customer[0] }}"><i class="glyphicon glyphicon-lock" class="tele">个人中心 </i></button></li>
+                                <!--静态框--->
+                                <div class="modal fade" id="myModal13{{ customer[0] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	                                                <div class="modal-dialog">
+		                                                <div class="modal-content">
+			                                                <div class="modal-header">
+				                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				                                            <h4 class="modal-title" id="myModalLabe">修改个人信息</h4></div>
+                                                        <div class="modal-body">
+				                                            <div style="padding: 100px 100px 10px;">
+	                                                            <form class="bs-example bs-example-form" role="form" action="/alter_customer/{{ customer[0] }}" method="post">
+		                                                            <div class="input-group input-group-lg">
+			                                                                <span class="input-group-addon">用户名</span>
+			                                                                <input type="text" class="form-control" name="username" placeholder="请输入用户名" value="{{ customer[1] }}">
+		                                                                </div><br>
+                                                                        <div class="input-group input-group-lg">
+			                                                                <span class="input-group-addon">密 码</span>
+			                                                                <input type="text" class="form-control" name="password" placeholder="请输入密码" value="{{ customer[2] }}">
+		                                                                </div><br>
+                                                                        <div class="input-group input-group-lg">
+                                                                            <span class="input-group-addon">昵称</span>
+			                                                                <input type="text" class="form-control" name="nickname" placeholder="请设置昵称" value="{{ customer[3] }}">
+		                                                                </div><br>
+                                                                        <div class="input-group input-group-lg">
+                                                                            <span class="input-group-addon">手机号</span>
+			                                                                <input type="text" class="form-control" name="phone" placeholder="请使用常用手机" value="{{ customer[4] }}">
+		                                                                </div><br>
+                                                                        <div class="input-group input-group-lg">
+                                                                            <span class="input-group-addon">地址</span>
+			                                                                <input type="text" class="form-control" name="address" placeholder="请输入地址" value="{{ customer[5] }}">
+		                                                                </div><br>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                            <button type="submit" class="btn btn-primary"  id="myButtons1">提交更改</button>
+			                                                            </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+		                                                </div><!-- /.modal-content -->
+	                                                </div><!-- /.modal -->
+                                                </div>
+                            {% endif %}
+                        {% endfor %}
+						<li><a href="/order.page/{{ session.name }}"><i class="glyphicon glyphicon-lock" class="tele"> </i>订单中心</a></li>
+                        <li><a href="/logout.page"><i class="glyphicon glyphicon-off"> </i>退出登录</a></li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+
+		<div class="header">
+			<div class="header-top">
+				<div class="header-bottom">
+					<div class="container">
+						<div class="logo">
+							<h1><a href="/">I-<span>read</span></a></h1>
+						</div>
+						<div class="top-nav">
+							<ul class="memenu skyblue">
+								<li class="active"><a href="index.html">主页</a></li>
+								<li class="grid"><a href="#">童书</a></li>
+								<li class="grid"><a href="#">传记</a></li>
+								<li class="grid"><a href="#">管理</a></li>
+								<li class="grid"><a href="#">历史</a></li>
+								<li class="grid"><a href="#">电子书</a></li>
+							</ul>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<!---->
+					<div class="cart box_1">
+						<a href="/basket.page">
+							<img src="static/image/cart2-1.png" alt=""/>
+						</a>
+					</div>
+					<div class="clearfix"> </div>
+					<!---->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+
+		<div class="banner">
+			<div class="banner-top">
+	         	<h2>这 里 是 I-READ</h2>
+	        	 <p>这里有你想看的各类书籍，欢迎选购！</p>
+			</div>
+			<div class="now">
+	         	<a class="morebtn" href="product.html">Explore</a>
+	         	<a class="morebtn at-in" href="single.html">立即选购</a>
+	         	<div class="clearfix"> </div>
+			</div>
+ 		</div>
+			<div class="clearfix"> </div>
+<!----><!---->
+		<div class="sap_tabs">
+			<div class="container">
+			<label class="line"> </label>
+			<h2>最新商品</h2>
+						 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+						  	<ul class="resp-tabs-list">
+						  	  	<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>图书</span></li>
+							  	<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>墨镜</span></li>
+								<li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>CD</span></li>
+							  	<div class="clearfix"></div>
+						  	</ul>
+							 <div class="resp-tabs-container">
+							    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+									<div class="tab_img">
+									  <div class="img-top simpleCart_shelfItem">
+					   		  			   <img src="/static/image/pi2.jpg" class="img-responsive" alt=""/>
+								              <div class="tab_desc">
+												 <ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												 </ul>
+												  <div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">Book</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												  </div>
+											  </div>
+									  </div>
+
+										<div class="img-top simpleCart_shelfItem">
+					   		  			   <img src="/static/image/pi5.jpg" class="img-responsive" alt=""/>
+											<div class="tab_desc">
+												<ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												</ul>
+												<div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">Book</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												 </div>
+											</div>
+											<div class="col-in">
+											  	<p>NEW</p>
+											</div>
+										</div>
+
+										<div class="img-top simpleCart_shelfItem">
+					   		  			   <img src="/static/image/pi8.jpg" class="img-responsive" alt=""/>
+											<div class="tab_desc">
+												<ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												</ul>
+
+												 <div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">Book</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												 </div>
+											</div>
+											 <div class="col-in col-in-1">
+											  	<p>SALE <span>30%</span></p>
+											 </div>
+										</div>
+											<div class="clearfix"></div>
+							     </div>
+						  </div>
+							    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+									<div class="tab_img">
+									  <div class="img-top simpleCart_shelfItem">
+					   		  			   <img src="/static/image/pi3.jpg" class="img-responsive" alt=""/>
+								              <div class="tab_desc">
+												 <ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												 </ul>
+
+												 <div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">Goggles</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+															<li><a href="#"><i class="text"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												 </div>
+											  </div>
+										</div>
+										<div class="img-top simpleCart_shelfItem">
+					   		  			   <img src="/static/image/pi6.jpg" class="img-responsive" alt=""/>
+											<div class="tab_desc">
+												 <ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												 </ul>
+												 <div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">Goggles</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+															<li><a href="#"><i class="text"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												 </div>
+											  </div>
+											  <div class="col-in">
+											  	<p>NEW</p>
+											  </div>
+											 </div>
+											  <div class="img-top simpleCart_shelfItem">
+					   		  			   <img src="/static/image/pi9.jpg" class="img-responsive" alt=""/>
+											<div class="tab_desc">
+												 <ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												 </ul>
+												 <div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">Goggles</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+															<li><a href="#"><i class="text"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												 </div>
+											  </div>
+											 <div class="col-in col-in-1">
+											  	<p>SALE <span>30%</span></p>
+											  </div>
+											</div>
+											<div class="clearfix"></div>
+							     </div>
+						  </div>
+						    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+									<div class="tab_img">
+
+									  <div class="img-top simpleCart_shelfItem">
+										  <img src="/static/image/pi4.jpg" class="img-responsive" alt=""/>
+								              <div class="tab_desc">
+												 <ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												 </ul>
+
+												 <div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">CD</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+															<li><a href="#"><i class="text"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												 </div>
+											  </div>
+									  </div>
+
+										<div class="img-top simpleCart_shelfItem">
+					   		  			   <img src="/static/image/pi10.jpg" class="img-responsive" alt=""/>
+											<div class="tab_desc">
+												 <ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												 </ul>
+												 	<div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">CD</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+															<li><a href="#"><i class="text"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												 </div>
+											  </div>
+											  <div class="col-in">
+											  	<p>NEW</p>
+											  </div>
+										</div>
+
+										<div class="img-top simpleCart_shelfItem">
+					   		  			   <img src="/static/image/pi7.jpg" class="img-responsive" alt=""/>
+											<div class="tab_desc">
+												 <ul class="round-top">
+												 	<li><a href="single.html"><i class="glyphicon glyphicon-search"> </i></a></li>
+												 	<li><a href="#"><i class="glyphicon glyphicon-resize-small"> </i></a></li>
+												 </ul>
+
+												 	<div class="agency ">
+													<div class="agency-left">
+														<h6 class="jean">CD</h6>
+														<span class="dollor item_price">$50.00</span>
+														<div class="clearfix"> </div>
+													</div>
+													<div class="agency-right">
+														<ul class="social">
+															<li><a href="#"><i class="item_add"> </i></a></li>
+															<li><a href="#"><i class="text"> </i></a></li>
+														</ul>
+														<ul class="social-in">
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i> </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+															<li><a href="#"><i > </i></a></li>
+														</ul>
+														<div class="clearfix"> </div>
+													</div>
+												 </div>
+											  </div>
+											 <div class="col-in col-in-1">
+											  	<p>SALE <span>30%</span></p>
+											  </div>
+										</div>
+											<div class="clearfix"></div>
+							     </div>
+						  </div>
+                  </div>
+						 </div>
+         </div>
+	</div>
+
+	<!--start-shoes-->
+	<div class="goggles">
+		<div class="container">
+			<h2>最新图书</h2>
+
+{%  for book in session.booklist %}
+			<div class="product-one">
+				<div class="col-md-3 product-left">
+					<div class="p-one simpleCart_shelfItem">
+                        <form id="form1" action="/add_to_basket" method="post">
+                            <input type="hidden" name ="username" value="{{ session.name }}">
+                            <input type="hidden" name ="item_id" value="{{ book[0] }}">
+							<a href="/single_item">
+								<img src="/static/image/{{ book[3] }}" alt="" />
+								<div class="mask"><span>商品详情</span></div>
+							</a>
+                            <p><h4>{{ book[1] }}</h4><span class=" item_price">￥{{ book[2] }}</span></p>
+                            <p></p><input type="submit" class="item_add" value="加入购物车">
+                        </form>
+                    </div>
+				</div>
+                {% endfor %}
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
+	<!--end-->
+	<!---->
+<footer>
+	<section class="service">
+		<ul>
+			<li><i></i>品类齐全，轻松购物</li>
+			<li><i></i>多仓直发，急速配送</li>
+			<li><i></i>正品行货，精致服务</li>
+			<li><i></i>天天低价，畅选无忧</li>
+		</ul>
+	</section>
+</footer>
+			 <!---->
+<script type="text/javascript">
+		$(document).ready(function() {
+				/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+				*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+});
+</script>
+<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!---->
+
+<!---->
+</body>
+</html>

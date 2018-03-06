@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="shopDB.db">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="admin"/>
+    <table id="7" parent="2" name="customer"/>
+    <table id="8" parent="2" name="item"/>
+    <table id="9" parent="2" name="lineitem"/>
+    <table id="10" parent="2" name="orders"/>
+    <table id="11" parent="2" name="seller"/>
+    <table id="12" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="13" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="14" parent="6" name="adminId">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="15" parent="6" name="adminName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="16" parent="6" name="adminPassword">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <key id="17" parent="6">
+      <ColNames>adminId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="18" parent="7" name="cId">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="19" parent="7" name="cName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="7" name="cPassword">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="7" name="cNname">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="22" parent="7" name="cPhone">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="23" parent="7" name="cAddress">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <key id="24" parent="7">
+      <ColNames>cId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="25" parent="8" name="itemId">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="26" parent="8" name="itemName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="27" parent="8" name="itemPrice">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="28" parent="8" name="itemImage">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <key id="29" parent="8">
+      <ColNames>itemId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="30" parent="9" name="lineitemId">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="31" parent="9" name="itemId">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="9" name="quantity">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="33" parent="9">
+      <ColNames>lineitemId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="34" parent="10" name="orderId">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="10" name="orderList">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="10" name="lineitemId">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="37" parent="10" name="cId">
+      <Position>3</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="38" parent="10" name="status">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="39" parent="10">
+      <ColNames>orderId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="11" name="sId">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="11" name="sName">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="11" name="sPassword">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="11" name="sNname">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="44" parent="11" name="sPhone">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="45" parent="11" name="sAddress">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <key id="46" parent="11">
+      <ColNames>sId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="47" parent="12" name="type">
+      <DataType>text|0</DataType>
+    </column>
+    <column id="48" parent="12" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="49" parent="12" name="tbl_name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="50" parent="12" name="rootpage">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="51" parent="12" name="sql">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="52" parent="13" name="name"/>
+    <column id="53" parent="13" name="seq">
+      <Position>1</Position>
+    </column>
+  </database-model>
+</dataSource>
